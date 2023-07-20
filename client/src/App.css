@@ -1,0 +1,55 @@
+
+body{
+  width: 50%;
+  margin: 0 auto ;
+}
+
+header{
+  text-align: center;
+}
+
+header h1{
+  font-size: 85px;
+  font-weight: 600;
+  color: green;
+}
+
+input{
+  font-size: 20px;
+  color:darkblue;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid darkblue;
+  padding: 5px;
+}
+.task{
+  background-color: antiquewhite;
+  padding: 15 px;
+  margin: 5px;
+  overflow-x: hidden;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.task span{
+  color: black;
+}
+
+.icon{
+  float: right;
+  margin-right: 15px;
+}
+
+article{
+  display: grid;
+}
+.edit-todo{
+  width: 85%;
+  font-size: 16px;
+  color: aliceblue;
+  background-color: transparent;
+  border:none;
+  border-bottom: 1px solid #ffff;
+}
