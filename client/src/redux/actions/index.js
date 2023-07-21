@@ -8,7 +8,7 @@ const API_URL = 'http://localhost:8000';
 export const addNewTodo = (data) => async(dispatch) =>{
     // console.log(data)
     try {
-        const res = await axios.post(`${API_URL}/todos`,data );
+    const res = await axios.post(`${API_URL}/todos`,{data} );
         // console.log(data)
         dispatch({type: ADDNEW_TODO,payload:res.data})
     }catch(error){

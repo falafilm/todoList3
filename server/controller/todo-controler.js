@@ -55,8 +55,7 @@ export const updateTodo = async(req, res) =>{
         )
         const todo = await todo.findById(req.params.id);
 
-        
-        await todo.save();
+
         
         return res.status(200).json(todo);
     }catch(error){
