@@ -15,17 +15,18 @@ header h1{
 }
 
 input{
+  margin-bottom: 20px;
   font-size: 20px;
-  color:darkblue;
-  width: 100%;
+  color:black;
+  width: 80%;
   border: none;
   outline: none;
-  border-bottom: 1px solid darkblue;
+  border-bottom: 1px solid #000;
   padding: 5px;
 }
 .task{
-  background-color: antiquewhite;
-  padding: 15 px;
+  background-color: green;
+  padding:  10px;
   margin: 5px;
   overflow-x: hidden;
   border-radius: 5px;
@@ -34,7 +35,7 @@ input{
 }
 
 .task span{
-  color: black;
+  color: white;
 }
 
 .icon{
@@ -52,4 +53,30 @@ article{
   background-color: transparent;
   border:none;
   border-bottom: 1px solid #ffff;
+}
+
+.button{
+  margin :0 10px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 14px;
+  color : #6c6777;
+  background-color: #ffff;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.button.selected {
+  color: #ffff;
+  background-color: #6c6777;
+}
+
+.button.clear{
+  float: right;
+  color: #fff;
+  background-color: red;
+  width: 140px;
+  margin-top: -7px;
 }

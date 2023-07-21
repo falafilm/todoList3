@@ -1,6 +1,6 @@
 import express, {Router} from "express";
 
-import { addTodo, getAllTodos, toggleTodoDone, updateTodo } from "../controller/todo-controler.js";
+import { addTodo, getAllTodos, toggleTodoDone, updateTodo,deleteTodo } from "../controller/todo-controler.js";
 
 
 

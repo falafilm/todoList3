@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toggleTodo, updateTodo } from "../redux/actions";
 import { deleteTodo } from "../redux/actions";
 import { useDispatch } from "react-redux";
-import Tabs from "./Tabs";
+
 
 const Todo = (todo) =>{
 

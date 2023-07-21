@@ -1,12 +1,13 @@
 import Todo from "../model/Todo.js";
 
 export const addTodo = async (req,res) =>{
+    console.log(req)
     try{
         const newTodo = await Todo.create({
             data: req.body.data,
             createdAt: Date.now()
         })
-
+        
         await newTodo.save();
 
         return res.status(200).json(newTodo);
@@ -17,8 +18,8 @@ export const addTodo = async (req,res) =>{
 
 export const getAllTodos = async(req, res) =>{
     try{
-        const todos = await Todo.find({}).sort({'createAt': -1});
-
+        const todos = await Todo.find();
+        // console.log(todos);
         return res.status(200).json(todos);
     }catch(error){
         return res.status(500).json(error.message);
@@ -28,7 +29,7 @@ export const getAllTodos = async(req, res) =>{
 
 export const toggleTodoDone = async(req, res) =>{
     try{
-        await Todo.findById(req,params.id);
+        const todoRef = await Todo.findById(req,params.id);
 
         const todo = await Todo.finddOneAndUpdate(
             {_id: req.params.id},
@@ -46,15 +47,16 @@ export const toggleTodoDone = async(req, res) =>{
 
 export const updateTodo = async(req, res) =>{
     try{
+        
 
         await Todo.finddOneAndUpdate(
             {_id: req.params.id},
-            {dota: req.params.data}
+            {data: req.body.data}
         )
-        const todo = await Todo.findById(req.params.id);
+        const todo = await todo.findById(req.params.id);
 
-
-        // await todo.save();
+        
+        await todo.save();
         
         return res.status(200).json(todo);
     }catch(error){
@@ -68,7 +70,6 @@ export const deleteTodo = async(req, res) =>{
 
         const todo = await Todo.findByIdAndDelete(req.params.id);
 
-        // await todo.save();
         
         return res.status(200).json(todo);
     }catch(error){

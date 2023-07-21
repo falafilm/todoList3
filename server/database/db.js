@@ -6,12 +6,12 @@ dotenv.config();
 const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
 
-export const Connection = () => {
+export const Connection = async() => {
 
     const MONGODB_URI = 'mongodb+srv://falafilm:falafilm@todolist.jvhx7x0.mongodb.net/?retryWrites=true&w=majority';
 
-    mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
-
+    await mongoose.connect(MONGODB_URI);
+    
     mongoose.connection.on('connected', () =>{
         console.log('Database Coneected!');
     })
@@ -21,7 +21,7 @@ export const Connection = () => {
     })
 
     mongoose.connection.on('error', () =>{
-        console.log('Database Error!', error.message);
+        console.log('Database Error!');
     })
 }
 
