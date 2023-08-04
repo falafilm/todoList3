@@ -49,7 +49,7 @@ article{
 .edit-todo{
   width: 85%;
   font-size: 16px;
-  color: aliceblue;
+  color: #ffff;
   background-color: transparent;
   border:none;
   border-bottom: 1px solid #ffff;
@@ -57,15 +57,15 @@ article{
 
 .button{
   margin :0 10px;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 14px;
+  margin-top: 8px;
+  padding: 7px;
+  font-size: 15px;
   color : #6c6777;
   background-color: #ffff;
   border: none;
   cursor: pointer;
-  width: 50px;
-  border-radius: 5px;
+  width: 70px;
+  border-radius: 10px;
 }
 
 .button.selected {
@@ -78,5 +78,5 @@ article{
   color: #fff;
   background-color: red;
   width: 140px;
-  margin-top: -7px;
+  margin-top: 7px;
 }

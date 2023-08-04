@@ -1,13 +1,15 @@
-import { useEffect } from "react";
-import { deleteTodo, getAllTodos } from "../redux/actions/index";
-import { ALL_TODOS,DONE_TODOS, ACTIVE_TODOS } from "../redux/actions/type";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { deleteTodo, getAllTodos } from '../redux/actions/index';
+import { ALL_TODOS, DONE_TODOS, ACTIVE_TODOS } from '../redux/actions/type';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-import Todo from "./Todo";
-import Tabs from "./Tabs";
+import Todo from './Todo';
+import Tabs from './Tabs';
+
 
 export const Todos = () => {
+
     const dispatch = useDispatch();
 
     const todos = useSelector(state => state.todos);
@@ -15,46 +17,48 @@ export const Todos = () => {
 
     useEffect(() => {
         dispatch(getAllTodos());
+    }, [])
 
-    }, [dispatch])
     const getTodos = () => {
-        if(currentTab === ALL_TODOS){
+        if (currentTab === ALL_TODOS) {
             return todos;
-        }else if(currentTab === ACTIVE_TODOS){
-            return todos.filter(todo => !todo.done);
-        }else if(currentTab === DONE_TODOS){
-            return todos.filter(todo => todo.done);
+        } else if (currentTab === ACTIVE_TODOS) {
+            return todos.filter(todo => !todo.done)
+        } else if (currentTab === DONE_TODOS) {
+            return todos.filter(todo => todo.done)
         }
     }
 
     const removeDoneTodos = () => {
-        todos.forEach(({done, _id}) => {
-            if(done) {
-                dispatch(deleteTodo(_id))
+        todos.forEach(({ done, _id }) => {
+            if (done) {
+                dispatch(deleteTodo(_id));
             }
         })
     }
-    return(
+
+    return (
         <article>
             <div>
                 <Tabs currentTab = {currentTab} />
+
                 {
-                    // todos.some(todo => todo.some) ? (
-                        
+                    todos.some(todo => todo.done) ? (
                         <button
+                            onClick={removeDoneTodos}
                             className="button clear"
-                            onClick = {removeDoneTodos}
-                        >Clear Done Todos</button>
-                    //  ) : null
+                        >Remove Done Todos</button>
+                    ) : null    
                 }
             </div>
-            <ul>{
+
+            <ul>
+                {
                     getTodos().map(todo => (
                         <Todo 
                             key = {todo._id}
-                            todo={todo}
+                            todo = {todo}
                         />
-
                     ))
                 }
             </ul>

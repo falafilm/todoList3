@@ -1,7 +1,7 @@
 import Todo from "../model/Todo.js";
 
 export const addTodo = async (req,res) =>{
-    console.log(req)
+    // console.log(req)
     try{
         const newTodo = await Todo.create({
             data: req.body.data,
@@ -18,7 +18,7 @@ export const addTodo = async (req,res) =>{
 
 export const getAllTodos = async(req, res) =>{
     try{
-        const todos = await Todo.find();
+        const todos = await Todo.find({});
         // console.log(todos);
         return res.status(200).json(todos);
     }catch(error){
@@ -29,9 +29,9 @@ export const getAllTodos = async(req, res) =>{
 
 export const toggleTodoDone = async(req, res) =>{
     try{
-        const todoRef = await Todo.findById(req,params.id);
+        const todoRef = await Todo.findById(req.params.id);
 
-        const todo = await Todo.finddOneAndUpdate(
+        const todo = await Todo.findOneAndUpdate(
             {_id: req.params.id},
             {done: !todoRef.done}
         )
@@ -45,35 +45,35 @@ export const toggleTodoDone = async(req, res) =>{
 
 }
 
-export const updateTodo = async(req, res) =>{
-    try{
-        
+export const updateTodo = async (req, res,) => {
+    try {
+        await Todo.findOneAndUpdate(
+            { _id: req.params.id},
+            {data: req.body.data }
+        );
 
-        await Todo.finddOneAndUpdate(
-            {_id: req.params.id},
-            {data: req.body.data}
-        )
-        const todo = await todo.findById(req.params.id);
+        const todo = await Todo.findById(req.params.id);
 
-
-        
         return res.status(200).json(todo);
-    }catch(error){
+    } catch (error) {
         return res.status(500).json(error.message);
     }
-
 }
 
+
 export const deleteTodo = async(req, res) =>{
+
     try{
 
-        const todo = await Todo.findByIdAndDelete(req.params.id);
+        const todo = await Todo.findByIdAndDelete(req.params.id );
 
         
         return res.status(200).json(todo);
     }catch(error){
         return res.status(500).json(error.message);
     }
+    
+      
 
 }
 

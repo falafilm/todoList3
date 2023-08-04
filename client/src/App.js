@@ -1,6 +1,6 @@
 import './App.css';
 
-//import component header
+//import component 
 import Header from './components/Header';
 import Todoform from './components/Todoform';
 import Todos from './components/Todos';

@@ -11,7 +11,7 @@ const reducer = combineReducers({
 })
 
 
-const middleware = [thunk]
+const middleware = [thunk];
 
 
 const store = createStore(

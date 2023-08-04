@@ -1,51 +1,53 @@
 import { useState } from "react";
-import { toggleTodo, updateTodo } from "../redux/actions";
+import { toggleTodo} from "../redux/actions";
+import { updateTodo  } from "../redux/actions";
 import { deleteTodo } from "../redux/actions";
 import { useDispatch } from "react-redux";
 
-
-const Todo = (todo) =>{
+const Todo = ({ todo }) => {
 
     const [editing, setEditing] = useState(false);
-    const [text, setText] = useState(todo.data);
+    const [text, setText] = useState(todo?.data);
+
     const dispatch = useDispatch();
 
-    const onFormSubmit = (e) =>{
+    const onFormSubmit = (e) => {
         e.preventDefault();
 
         setEditing(prevState => !prevState);
 
-        dispatch(updateTodo(todo._id,text))
+        dispatch(updateTodo(todo._id, text))
     }
 
-    return(
-        <li 
+    return (
+        <li
             className="task"
-            onClick = {() => dispatch(toggleTodo())}
-            style = {{
-                textDecoration: todo.done ? 'line-trought' : '',
-                color : todo.done ? '#bdc3c7' : '#34495e'
+            onClick={() => dispatch(toggleTodo(todo._id))}
+            style={{
+                textDecoration: todo?.done ? 'line-through' : '',
+                color: todo?.done ? '#CC0066' : '#FFFF'
             }}
+            data-testid="todo-test"
         >
-            <span style={({display: editing ? 'none' : ''})}>{todo.data}</span>
+            <span style={{ display: editing ? 'none' : '' }}>{todo?.data}</span>
 
             <form
-                style = {{display: editing ? 'inline' : 'none'}}
+                style={{ display: editing ? 'inline' : 'none' }}
                 onSubmit={onFormSubmit}
             >
                 <input
-                    type = "text"
-                    value = {text}
+                    type="text"
+                    value={text}
                     className="edit-todo"
                     onChange={(e) => setText(e.target.value)}
                 />
             </form>
 
-            <span className="icon" onClick={() => dispatch(deleteTodo(todo._is))}>
-                <i className="fas fa-trash"/>
+            <span className="icon" onClick={() => dispatch(deleteTodo(todo._id))}>
+                <i className="fas fa-trash" />
             </span>
             <span className="icon" onClick={() => setEditing(prevState => !prevState)}>
-                <i className="fas fa-pen"></i>
+                <i className="fas fa-pen" />
             </span>
         </li>
     )
