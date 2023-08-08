@@ -24,7 +24,7 @@ jobs:
         with:
             context: .
             push: true
-            tags: ${{ secret.DOCKERHUB_USERNAME}}/todolist:${{ github.sha}}
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/todolist:${{ github.sha}}
         # env:
         #   DOCKER_REPO: your-docker-hub-username/your-repo-name
         # run: |
